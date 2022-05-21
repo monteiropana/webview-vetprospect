@@ -1,0 +1,7 @@
+ion-button[color="dark"] {
+  text-transform: initial; //ion-button no component com atributo color = dark tera seu texto no formato initial (como foi escrito) e nao uppercase, lowercase ou qualquer outro
+}
+
+ion-content {
+  --background: var(--ion-color-tertiary);
+}

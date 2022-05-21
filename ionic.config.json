@@ -1,0 +1,7 @@
+{
+  "name": "webview-vetprospect",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
