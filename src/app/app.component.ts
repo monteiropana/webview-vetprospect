@@ -1,3 +1,4 @@
+import { VeterinarioService } from './services/veterinario.service';
 import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
@@ -7,5 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public appPages = [
   ];
-  constructor() {}
+  constructor(private vetService: VeterinarioService) {
+    vetService.getVeterinarios().subscribe(payload => {
+      console.log(payload);
+    },
+    error => {
+      console.log('DEU ERRO AQUI ' + error);
+    });
+  }
 }

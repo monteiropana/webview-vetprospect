@@ -1,3 +1,4 @@
+import { VeterinarioService } from './../../services/veterinario.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListagemPage implements OnInit {
 
-  constructor() { }
+  veterinarios: any;
+
+  constructor(private vetService: VeterinarioService) { }
 
   ngOnInit() {
+    this.vetService.getVeterinarios().subscribe(vet => {
+      this.veterinarios = vet;
+    });
   }
-
 }

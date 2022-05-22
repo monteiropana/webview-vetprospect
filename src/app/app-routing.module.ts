@@ -24,8 +24,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'vet-list',
-    loadChildren: () => import('./pages/vet-list/vet-list.module').then( m => m.VetListPageModule)
+    path: 'vet-info',
+    loadChildren: () => import('./pages/vet-info/vet-info.module').then( m => m.VetInfoPageModule)
   },
   {
     path: 'listagem',

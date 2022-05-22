@@ -1,12 +1,22 @@
+import { VeterinarioService } from './../../services/veterinario.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 // import { FormBuilder } from '@angular/forms';
 
-export interface Usuario {
+export interface Veterinario {
   nome: string;
-  email: string;
-  senha: string;
+  especialidade: string;
+  crmv: number;
   telefone: string;
-  isVet: boolean;
+  observacoes: string;
+  endereco: Endereco;
+}
+
+export interface Endereco {
+  logradouro: string;
+  numero: string;
+  bairro: string;
+  cidade: number;
 }
 
 @Component({
@@ -16,16 +26,43 @@ export interface Usuario {
 })
 export class RegisterPage implements OnInit {
 
-  user: Usuario;
-  veterinario = {
-    label: 'Veteriário',
-    value: false
-  }
+  vet: Veterinario;
 
-  constructor() { }
+  cidades = [
+    {
+      id: 1,
+      nome: 'Londrina'
+    },
+    {
+      id: 2,
+      nome: 'Osasco'
+    }
+  ];
+
+  cidadeSelecionada: number;
+
+  constructor(
+    private veterinarioService: VeterinarioService,
+    private router: Router) { }
 
   ngOnInit() {
-    this.user = {} as Usuario;
+    this.vet = {} as Veterinario;
+    this.vet.endereco = {} as Endereco;
   }
 
+  selecionarCidade(idCidade: number) {
+    this.cidadeSelecionada = idCidade;
+  }
+
+  salvarVeterinario() {
+    this.vet.endereco.cidade = this.cidadeSelecionada;
+    this.veterinarioService.addVeterinario(this.vet).subscribe(
+      () => {
+        this.router.navigate(['/listagem']);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 }

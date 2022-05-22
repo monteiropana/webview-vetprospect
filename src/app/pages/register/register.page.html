@@ -13,34 +13,51 @@
     <ion-card-content>
       <ion-item>
         <ion-label position="floating">Nome Completo</ion-label>
-        <ion-input [(ngModel)]="user.nome"></ion-input>
+        <ion-input [(ngModel)]="vet.nome"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+        <ion-label position="floating">Especialidade</ion-label>
+        <ion-input [(ngModel)]="vet.especialidade"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Senha</ion-label>
-        <ion-input type="password" [(ngModel)]="user.senha"></ion-input>
+        <ion-label position="floating">CRMV</ion-label>
+        <ion-input type="number" [(ngModel)]="vet.crmv"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Telefone</ion-label>
-        <ion-input  type="tel" [(ngModel)]="user.telefone"></ion-input>
+        <ion-input type="tel" [(ngModel)]="vet.telefone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Observacoes</ion-label>
+        <ion-textarea [(ngModel)]="vet.observacoes"></ion-textarea>
       </ion-item>
     </ion-card-content>
   </ion-card>
 
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Opções</ion-card-title>
+      <ion-card-title>Endereço</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-item>
-        <ion-label> {{veterinario.label}}</ion-label>
-        <ion-checkbox [(ngModel)]="veterinario.value"></ion-checkbox>
+        <ion-label position="floating">Logradouro</ion-label>
+        <ion-textarea [(ngModel)]="vet.endereco.logradouro"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Numero</ion-label>
+        <ion-textarea [(ngModel)]="vet.endereco.numero"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Bairro</ion-label>
+        <ion-textarea [(ngModel)]="vet.endereco.bairro"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-select placeholder="Cidade">
+          <ion-select-option *ngFor="let cidade of cidades" value="{{cidade.id}}" (onchange)="selecionarCidade(cidade.id)">{{cidade.nome}}</ion-select-option>
+        </ion-select>
       </ion-item>
     </ion-card-content>
   </ion-card>
 
-  <ion-button color="success" size="full" shape="round">Registrar</ion-button>
+  <ion-button color="success" size="full" shape="round" (click)="salvarVeterinario()">Cadastrar</ion-button>
 </ion-content>
