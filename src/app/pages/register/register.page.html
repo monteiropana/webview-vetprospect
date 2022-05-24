@@ -21,7 +21,7 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">CRMV</ion-label>
-        <ion-input type="number" [(ngModel)]="vet.crmv"></ion-input>
+        <ion-input [(ngModel)]="crmv"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Telefone</ion-label>
@@ -52,8 +52,8 @@
         <ion-textarea [(ngModel)]="vet.endereco.bairro"></ion-textarea>
       </ion-item>
       <ion-item>
-        <ion-select placeholder="Cidade">
-          <ion-select-option *ngFor="let cidade of cidades" value="{{cidade.id}}" (onchange)="selecionarCidade(cidade.id)">{{cidade.nome}}</ion-select-option>
+        <ion-select placeholder="Cidade" (ionChange)="selecionarCidade($event)">
+          <ion-select-option *ngFor="let cidade of cidades" value="{{cidade.id}}">{{cidade.nome}}</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-card-content>

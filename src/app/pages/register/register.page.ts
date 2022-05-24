@@ -16,7 +16,11 @@ export interface Endereco {
   logradouro: string;
   numero: string;
   bairro: string;
-  cidade: number;
+  cidade: Cidade;
+}
+
+export interface Cidade {
+  id: number;
 }
 
 @Component({
@@ -27,6 +31,7 @@ export interface Endereco {
 export class RegisterPage implements OnInit {
 
   vet: Veterinario;
+  crmv: string;
 
   cidades = [
     {
@@ -48,14 +53,18 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
     this.vet = {} as Veterinario;
     this.vet.endereco = {} as Endereco;
+    this.vet.endereco.cidade = {} as Cidade;
   }
 
-  selecionarCidade(idCidade: number) {
-    this.cidadeSelecionada = idCidade;
+  selecionarCidade($event: any) {
+    console.log($event.detail.value);
+    // console.log(idCidade);
+    this.cidadeSelecionada = Number($event.detail.value);
   }
 
   salvarVeterinario() {
-    this.vet.endereco.cidade = this.cidadeSelecionada;
+    this.vet.endereco.cidade.id = this.cidadeSelecionada;
+    this.vet.crmv = Number(this.crmv);
     this.veterinarioService.addVeterinario(this.vet).subscribe(
       () => {
         this.router.navigate(['/listagem']);
