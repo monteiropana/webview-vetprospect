@@ -1,3 +1,7 @@
 p {
   white-space: normal; //serve para o texto ficar completo, nao aparecer reduzido, com reticencias
 }
+
+ion-content {
+  --background: var(--ion-color-tertiary);
+}

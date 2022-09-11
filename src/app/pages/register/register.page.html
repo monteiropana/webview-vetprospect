@@ -5,53 +5,53 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card color="primary">
     <ion-card-header>
       <ion-card-title>Dados</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
-      <ion-item>
+      <ion-item color="primary">
         <ion-label position="floating">Nome Completo</ion-label>
         <ion-input [(ngModel)]="vet.nome"></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item color="primary">
         <ion-label position="floating">Especialidade</ion-label>
         <ion-input [(ngModel)]="vet.especialidade"></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item color="primary">
         <ion-label position="floating">CRMV</ion-label>
         <ion-input [(ngModel)]="crmv"></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item color="primary">
         <ion-label position="floating">Telefone</ion-label>
         <ion-input type="tel" [(ngModel)]="vet.telefone"></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item color="primary">
         <ion-label position="floating">Observacoes</ion-label>
         <ion-textarea [(ngModel)]="vet.observacoes"></ion-textarea>
       </ion-item>
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <ion-card color="primary">
     <ion-card-header>
       <ion-card-title>Endereço</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-item>
+      <ion-item color="primary">
         <ion-label position="floating">Logradouro</ion-label>
         <ion-textarea [(ngModel)]="vet.endereco.logradouro"></ion-textarea>
       </ion-item>
-      <ion-item>
+      <ion-item color="primary">
         <ion-label position="floating">Numero</ion-label>
         <ion-textarea [(ngModel)]="vet.endereco.numero"></ion-textarea>
       </ion-item>
-      <ion-item>
+      <ion-item color="primary">
         <ion-label position="floating">Bairro</ion-label>
         <ion-textarea [(ngModel)]="vet.endereco.bairro"></ion-textarea>
       </ion-item>
-      <ion-item>
+      <ion-item color="primary">
         <ion-select placeholder="Cidade" (ionChange)="selecionarCidade($event)">
           <ion-select-option *ngFor="let cidade of cidades" value="{{cidade.id}}">{{cidade.nome}}</ion-select-option>
         </ion-select>
